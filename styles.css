@@ -460,7 +460,7 @@ figure.print figcaption { color: var(--gray); font-size: .9rem; margin: 10px var
 .lp-hero .lp-hero-in { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: end;
   min-height: 100svh; padding-block: calc(var(--nav-h) + 20px) 36px; margin-top: 0; }
 .lp-stack { justify-self: center; width: max-content; }
-.lp-hero h1 { font-variation-settings: "wdth" 62; font-weight: 900; font-size: clamp(3.8rem, 20vw, 12rem); line-height: .86; letter-spacing: -.01em; margin: 0 0 22px; }
+.lp-hero h1 { font-variation-settings: "wdth" 62; font-weight: 900; font-size: clamp(4.4rem, 24vw, 14rem); line-height: .86; letter-spacing: -.01em; margin: 0 0 22px; }
 .lp-hero h1 span { display: block; }
 .lp-hero .status { margin-bottom: 18px; }
 .lp-hero .lede { font-size: 1.02rem; margin-bottom: 24px; max-width: 34ch; }
