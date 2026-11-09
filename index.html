@@ -7,7 +7,10 @@
 <meta name="description" content="KOSMOS landed Pechka 1 on Vesta: the first landing on another planet. Reusable Phoenix 10 rockets, Kir station, and what we fly next.">
 <meta property="og:title" content="KOSMOS: First on Vesta">
 <meta property="og:description" content="Pechka 1 fell through the clouds of Vesta, landed and sent home 193 science units and a surface photograph.">
-<meta property="og:image" content="assets/plate-09.png">
+<meta property="og:image" content="https://silliestputty.github.io/kosmos/assets/plate-09.png">
+<meta property="og:url" content="https://silliestputty.github.io/kosmos/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="assets/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,6 +19,7 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="nav">
   <div class="wrap">
@@ -30,9 +34,9 @@
   </div>
 </header>
 
-<main>
+<main id="main">
 <section class="hero" aria-labelledby="hero-title" style="padding:0">
-  <img class="bg" src="assets/pad.jpg" alt="A Phoenix 10 rocket carrying Tianwen-1 on the launch pad under a blue sky." width="1560" height="700">
+  <img class="bg" src="assets/pad.jpg" fetchpriority="high" alt="A Phoenix 10 rocket carrying Tianwen-1 on the launch pad under a blue sky." width="1560" height="700">
   <div class="wrap">
     <p class="status">Mission complete: Pechka 1</p>
     <h1 id="hero-title">First on Vesta.</h1>
@@ -50,7 +54,7 @@
     <p class="intro">Pechka 1 is a hardened pressure sphere with a barometer, a thermometer and cameras. It landed under air dense enough to crush it, and kept working long enough to send everything home through the Hawk carrier overhead.</p>
     <div class="vesta-grid">
       <figure class="plate09">
-        <img src="assets/plate-09.png" width="889" height="554" alt="Plate 09: brown ground under a dark, streaked sky on the surface of Vesta, framed by the Pechka console's surface-imaging screen.">
+        <a href="assets/plate-09.png"><img src="assets/plate-09.png" width="889" height="554" alt="Plate 09: brown ground under a dark, streaked sky on the surface of Vesta, framed by the Pechka console's surface-imaging screen."></a>
         <figcaption>Plate 09. Surface camera C04, Abyss region, Vesta. Released by the Director without alteration.</figcaption>
       </figure>
       <dl class="figures">
@@ -194,8 +198,10 @@
   <div class="wrap">
     <img src="assets/insignia.png" alt="KOSMOS insignia" width="64" height="64">
     <p><strong style="color:var(--white)">KOSMOS</strong>, the Kerbal Organization for Socialist Missions in Outer Space, formerly the KCSP. A Kerbal Space Program career in the Ciro system, not a real space agency.</p>
+    <a class="top" href="#main">Back to top</a>
   </div>
 </footer>
 
+<script src="site.js" defer></script>
 </body>
 </html>
