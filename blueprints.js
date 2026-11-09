@@ -1,5 +1,6 @@
-// KOSMOS blueprints: wireframe models built from the craft files' real part positions.
-// Each part is drawn as a simple shape sized from its attachment nodes; hover or tap a part to identify it.
+// KOSMOS blueprints: wireframe models built from the craft files.
+// Flown craft use each part's real game mesh, drawn as its feature edges with hidden lines removed.
+// Concepts, which have no craft file yet, are drawn as simple shapes. Hover or tap a part to identify it.
 (function () {
   var stage = document.getElementById('bp-stage');
   if (!stage || !window.THREE) return;
@@ -98,15 +99,42 @@
     }
   }
 
+  // ---------- real part meshes ----------
+  var LIB = null, LIBBIN = null, libGeo = {};
+  function meshGeo(k) {
+    if (libGeo[k]) return libGeo[k];
+    var m = LIB && LIB[k]; if (!m) return null;
+    var q = new Int16Array(LIBBIN, m.v, m.n * 3), pos = new Float32Array(m.n * 3);
+    for (var i = 0; i < m.n; i++) for (var a = 0; a < 3; a++) {
+      var v = m.lo[a] + (q[i * 3 + a] + 32768) / 65535 * (m.hi[a] - m.lo[a]);
+      pos[i * 3 + a] = a === 2 ? -v : v;                       // KSP is left-handed: mirror z
+    }
+    var A = m.big ? Uint32Array : Uint16Array;
+    var attr = new THREE.BufferAttribute(pos, 3);
+    var fill = new THREE.BufferGeometry(); fill.setAttribute('position', attr); fill.setIndex(new THREE.BufferAttribute(new A(LIBBIN, m.t[0], m.t[1]), 1));
+    fill.computeBoundingSphere();
+    var edges = new THREE.BufferGeometry(); edges.setAttribute('position', attr); edges.setIndex(new THREE.BufferAttribute(new A(LIBBIN, m.e[0], m.e[1]), 1));
+    fill.userData.shared = edges.userData.shared = true;
+    return (libGeo[k] = { fill: fill, edges: edges });
+  }
+
   function build(def) {
-    if (root) { scene.remove(root); root.traverse(function (o) { if (o.geometry) o.geometry.dispose(); }); }
+    if (root) { scene.remove(root); root.traverse(function (o) { if (o.geometry && !o.geometry.userData.shared) o.geometry.dispose(); }); }
     root = new THREE.Group(); meshes = []; parts = def.parts; hovered = pinned = groupOn = null;
     def.parts.forEach(function (p, i) {
-      var g = geo(p[5], p[6], p[7]);
-      g.translate(0, p[8] || 0, 0);
-      var fill = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: 0x9aa3ad, transparent: true, opacity: 0.035, depthWrite: false, side: THREE.DoubleSide }));
-      var eg = edgeGeo(p[5], p[6], p[7]); eg.translate(0, p[8] || 0, 0);
-      var edges = new THREE.LineSegments(eg, new THREE.LineBasicMaterial({ color: COL.line, transparent: true, opacity: 0.55 }));
+      var real = p[9] ? meshGeo(p[9]) : null, fill, edges;
+      if (real) {
+        // Solid black body hides the lines behind it, so the part reads as the real object.
+        fill = new THREE.Mesh(real.fill, new THREE.MeshBasicMaterial({ color: 0x0c1015, side: THREE.DoubleSide, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 }));
+        fill.userData.real = true;
+        edges = new THREE.LineSegments(real.edges, new THREE.LineBasicMaterial({ color: COL.line, transparent: true, opacity: 0.8 }));
+      } else {
+        var g = geo(p[5], p[6], p[7]);
+        g.translate(0, p[8] || 0, 0);
+        fill = new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: 0x9aa3ad, transparent: true, opacity: 0.035, depthWrite: false, side: THREE.DoubleSide }));
+        var eg = edgeGeo(p[5], p[6], p[7]); eg.translate(0, p[8] || 0, 0);
+        edges = new THREE.LineSegments(eg, new THREE.LineBasicMaterial({ color: COL.line, transparent: true, opacity: 0.55 }));
+      }
       var holder = new THREE.Group();
       holder.add(fill); holder.add(edges);
       var pos = p[3], q = p[4];
@@ -141,6 +169,11 @@
       var active = i === hovered || i === pinned;
       var c = active ? COL.sel : inGroup ? COL.hot : (groupOn ? COL.dim : COL.line);
       e.material.color.setHex(c);
+      if (m.userData.real) {
+        e.material.opacity = active || inGroup ? 1 : groupOn ? 0.3 : 0.8;
+        m.material.color.setHex(active ? 0x2a2108 : inGroup ? 0x2a0a0d : 0x0c1015);
+        return;
+      }
       e.material.opacity = active || inGroup ? 1 : groupOn ? 0.35 : 0.55;
       m.material.opacity = active ? 0.22 : inGroup ? 0.12 : 0.035;
       m.material.color.setHex(active ? COL.sel : inGroup ? COL.hot : 0x9aa3ad);
@@ -228,7 +261,13 @@
     });
   }
 
-  fetch('assets/models.json').then(function (r) { return r.json(); }).then(function (d) {
+  // Real meshes are optional: if they fail to load, every part falls back to its simple shape.
+  var meshLoad = Promise.all([
+    fetch('assets/meshes.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }),
+    fetch('assets/meshes.bin').then(function (r) { if (!r.ok) throw 0; return r.arrayBuffer(); })
+  ]).then(function (x) { LIB = x[0]; LIBBIN = x[1]; }).catch(function () { LIB = null; });
+  Promise.all([fetch('assets/models.json').then(function (r) { return r.json(); }), meshLoad]).then(function (res) {
+    var d = res[0];
     data = d; menuUI();
     var start = (location.hash || '').slice(1);
     select(catalog.some(function (c) { return c.key === start; }) ? start : 'tianwen');
