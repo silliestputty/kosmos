@@ -449,3 +449,103 @@ figure.print figcaption { color: var(--gray); font-size: .9rem; margin: 10px var
 }
 
 .bp-credit { color: #6b7178; font-size: .85rem; max-width: 80ch; margin-top: 16px; }
+
+/* ---------- Landing page ---------- */
+/* Blueprint hero: the real Phoenix 10 drawn as lines, rising beside a condensed headline. */
+.lp-hero { display: block; min-height: 100svh; padding: 0; }
+.lp-grid { position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(242,242,239,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(242,242,239,.045) 1px, transparent 1px);
+  background-size: 28px 28px; background-position: right -1px top -1px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 70% at 85% 45%, #000 20%, transparent 75%); mask-image: radial-gradient(ellipse 90% 70% at 85% 45%, #000 20%, transparent 75%); }
+.lp-hero .lp-hero-in { position: relative; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 14px; align-items: end;
+  min-height: 100svh; padding-block: calc(var(--nav-h) + 20px) 36px; margin-top: 0; }
+.lp-stack { justify-self: center; width: max-content; }
+.lp-hero h1 { font-variation-settings: "wdth" 62; font-weight: 900; font-size: clamp(3.8rem, 20vw, 12rem); line-height: .86; letter-spacing: -.01em; margin: 0 0 22px; }
+.lp-hero h1 span { display: block; }
+.lp-hero .status { margin-bottom: 18px; }
+.lp-hero .lede { font-size: 1.02rem; margin-bottom: 24px; max-width: 34ch; }
+.lp-stack { position: relative; margin: 0; height: calc(100svh - var(--nav-h) - 56px); align-self: stretch; display: flex; justify-content: center; }
+.lp-stack img { height: 100%; width: auto; max-width: none; mix-blend-mode: screen; }
+.lp-stack figcaption { display: none; }
+@media (prefers-reduced-motion: no-preference) {
+  .lp-stack img { animation: lp-rise 2.4s cubic-bezier(.65, 0, .2, 1) .2s both; }
+  .lp-stack figcaption span { animation: lp-fade .8s ease 2.2s both; }
+  @keyframes lp-rise { from { clip-path: inset(100% 0 0 0); transform: translateY(6%); } to { clip-path: inset(0 0 0 0); transform: none; } }
+  @keyframes lp-fade { from { opacity: 0; } to { opacity: 1; } }
+}
+@media (min-width: 700px) {
+  .lp-stack figcaption { display: block; position: absolute; inset: 0; pointer-events: none; }
+  .lp-stack figcaption span { position: absolute; top: var(--y); right: calc(100% + 14px); white-space: nowrap; font-size: .78rem; font-weight: 600; color: var(--gray);
+    font-variant-numeric: tabular-nums; padding-right: 54px; }
+  .lp-stack figcaption span::after { content: ""; position: absolute; right: 0; top: 50%; width: 44px; height: 1px; background: rgba(242,242,239,.35); }
+  .lp-hero .lp-hero-in { gap: 32px; }
+}
+@media (min-width: 1000px) {
+  .lp-hero .lp-hero-in { grid-template-columns: minmax(0, 1fr) minmax(260px, 34%); padding-bottom: 64px; }
+  .lp-stack { height: calc(100svh - var(--nav-h) - 72px); justify-content: center; }
+  .lp-hero .lede { font-size: 1.2rem; max-width: 40ch; }
+}
+
+/* Mission figures */
+.lp-vesta h2 { max-width: 14ch; }
+.lp-figs { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin: 8px 0 36px; border-top: 1px solid var(--line); }
+.lp-figs div { padding: 18px 12px 18px 0; border-bottom: 1px solid var(--line); }
+.lp-figs dt { font-weight: 900; font-variation-settings: "wdth" 62; font-size: clamp(2.6rem, 13vw, 4.6rem); line-height: .9; color: var(--gold); white-space: nowrap; }
+.lp-figs dd { margin: 6px 0 0; color: var(--dim); font-size: .92rem; line-height: 1.35; }
+@media (min-width: 900px) { .lp-figs { grid-template-columns: repeat(4, 1fr); } }
+.lp-vesta .plate09 { margin-bottom: 24px; }
+.lp-vesta .intro { margin-top: 0; }
+.lp-record { border-block: 1px solid var(--line); margin: 8px 0 0; }
+.lp-record summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; min-height: 56px; font-weight: 700; font-size: 1.05rem; }
+.lp-record summary::-webkit-details-marker { display: none; }
+.lp-record summary::after { content: ""; width: 12px; height: 12px; flex: none; border-right: 2px solid var(--white); border-bottom: 2px solid var(--white); transform: rotate(45deg) translateY(-3px); transition: transform .3s var(--ease); }
+.lp-record[open] summary::after { transform: rotate(-135deg) translateY(-3px); }
+.lp-record .phases { margin-top: 12px; }
+.lp-record h3 { margin-bottom: 16px; }
+.lp-note { color: var(--gray); font-size: .9rem; margin: 0 0 20px; }
+
+/* The fleet, drawn to one scale */
+.lp-stages { list-style: none; margin: 8px 0 0; padding: 0; border-top: 1px solid var(--line); }
+.lp-stages li { padding: 28px 0; border-bottom: 1px solid var(--line); }
+.lp-stages img { width: var(--len); height: auto; mix-blend-mode: screen; margin-bottom: 18px; }
+.lp-stages h3 { font-size: 1.35rem; font-variation-settings: "wdth" 80; font-weight: 800; margin: 0 0 6px; }
+.lp-stages p { margin: 0; color: var(--dim); max-width: 52ch; }
+@media (min-width: 1000px) {
+  .lp-stages li { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: 40px; align-items: center; }
+  .lp-stages img { margin: 0; }
+  .lp-stages li > :not(img) { grid-column: 2; }
+  .lp-stages img { grid-row: 1 / span 2; }
+}
+.lp-pair { display: grid; gap: 28px; margin-top: 36px; }
+.lp-pair figure { margin: 0; }
+.lp-pair img { width: min(100%, 360px); height: auto; mix-blend-mode: screen; margin: 0 auto 14px; }
+.lp-pair h3 { font-size: 1.35rem; font-variation-settings: "wdth" 80; font-weight: 800; margin: 0 0 6px; }
+.lp-pair p { margin: 0; color: var(--dim); }
+@media (min-width: 640px) { .lp-pair { grid-template-columns: 1fr 1fr; gap: 40px; } }
+
+/* Next */
+.lp-next { list-style: none; margin: 8px 0 0; padding: 0; counter-reset: n; display: grid; border-top: 1px solid var(--line); }
+.lp-next li { counter-increment: n; display: grid; grid-template-columns: 2.4rem 1fr; column-gap: 8px; padding: 18px 0; border-bottom: 1px solid var(--line); }
+.lp-next li::before { content: counter(n); grid-row: 1 / span 2; font-weight: 900; font-variation-settings: "wdth" 62; font-size: 1.9rem; line-height: 1; color: #3a4047; }
+.lp-next li.now::before { color: var(--red); }
+.lp-next h3 { margin: 0 0 2px; font-size: 1.1rem; }
+.lp-next p { margin: 0; color: var(--dim); font-size: .95rem; }
+@media (min-width: 720px) { .lp-next { grid-template-columns: 1fr 1fr; column-gap: 40px; } }
+@media (min-width: 1100px) { .lp-next { grid-template-columns: repeat(3, 1fr); } }
+
+/* Rivals */
+.lp-rival p.callout { color: var(--white); font-size: 1.15rem; line-height: 1.45; margin-top: 20px; }
+.lp-rival h3 { margin-top: 0; }
+
+/* Closing call, over the photograph of Gael's limb */
+.lp-cta { position: relative; overflow: hidden; border: 0; padding-block: 120px 56px; }
+.lp-cta-bg { position: absolute; inset: 0; }
+.lp-cta-bg img { width: 100%; height: 100%; object-fit: cover; opacity: .7;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 30%, #000 70%, transparent 100%); }
+.lp-cta .wrap { position: relative; }
+.lp-cta h2 { font-variation-settings: "wdth" 62; font-weight: 900; font-size: clamp(2.8rem, 13vw, 6rem); line-height: .9; max-width: 12ch; }
+@media (min-width: 720px) { .lp-cta { padding-block: 200px 96px; } }
+@media (min-width: 1000px) {
+  .lp-stages h3 { align-self: end; }
+  .lp-stages p { align-self: start; }
+}

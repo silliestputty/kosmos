@@ -30,7 +30,7 @@
       <a href="#vesta">Vesta</a>
       <a href="#vehicles">Vehicles</a>
       <a href="#next">Next</a>
-      <a href="#shareholders">Shareholders</a>
+      <a href="#shareholders">Rivals</a>
       <a href="roadmap.html">Roadmap</a>
       <a href="blueprints.html">Hardware</a>
       <a href="designs.html">Designs</a>
@@ -41,116 +41,105 @@
 </header>
 
 <main id="main">
-<section class="hero" aria-labelledby="hero-title">
-  <div class="media"><picture>
-    <source media="(max-width: 899px)" srcset="assets/ascent-m.jpg" width="560" height="740">
-    <img class="bg" src="assets/ascent.jpg" fetchpriority="high" alt="A Phoenix 10 climbing through the cloud tops above a green coastline, its exhaust a bright white streak." width="950" height="710">
-  </picture></div>
-  <div class="wrap">
-    <p class="status">Mission complete: Pechka 1</p>
-    <h1 id="hero-title">First on Vesta.</h1>
-    <p class="lede">Our lander fell through a cloud deck no telescope had ever seen past, touched down in the Abyss region and sent its findings home. No one had landed on another planet before.</p>
-    <div class="actions">
-      <a class="btn primary" href="#vesta">Read the flight record</a>
-      <a class="btn" href="roadmap.html">See the roadmap</a>
+
+<section class="hero lp-hero" aria-labelledby="hero-title">
+  <div class="lp-grid" aria-hidden="true"></div>
+  <div class="wrap lp-hero-in">
+    <div class="lp-hero-text">
+      <p class="status">Mission complete: Pechka 1</p>
+      <h1 id="hero-title"><span>First</span> <span>on</span> <span>Vesta.</span></h1>
+      <p class="lede">Our lander fell through a cloud deck no telescope had ever seen past, touched down in the Abyss region and sent its findings home. No one had landed on another planet before.</p>
+      <div class="actions">
+        <a class="btn primary" href="#vesta">Read the flight record</a>
+        <a class="btn" href="roadmap.html">See the roadmap</a>
+      </div>
     </div>
+    <figure class="lp-stack">
+      <img src="assets/wire/phoenix-stack.png" width="104" height="1696" alt="Line drawing of the Phoenix 10 with Tianwen-1, drawn from the real craft: the booster at the bottom, the Bifang stage, the Hawk carrier and Pechka 1 on top.">
+      <figcaption>
+        <span style="--y:3%">Pechka 1</span>
+        <span style="--y:14%">Hawk carrier</span>
+        <span style="--y:42%">Bifang</span>
+        <span style="--y:76%">Phoenix 10 booster</span>
+      </figcaption>
+    </figure>
   </div>
 </section>
 
-<section id="vesta" aria-labelledby="vesta-title">
+<section id="vesta" class="lp-vesta" aria-labelledby="vesta-title">
   <div class="wrap">
     <h2 id="vesta-title">The first picture from another world</h2>
-    <p class="intro">Pechka 1 is a hardened pressure sphere with a barometer, a thermometer and cameras. It landed under air dense enough to crush it, and kept working long enough to send everything home through the Hawk carrier overhead.</p>
-    <div class="vesta-grid">
-      <figure class="plate09">
-        <a href="assets/plate-09.png"><img src="assets/plate-09.png" width="889" height="554" alt="Plate 09: brown ground under a dark, streaked sky on the surface of Vesta, framed by the Pechka console's surface-imaging screen."></a>
-        <figcaption>Plate 09. Surface camera C04, Abyss region, Vesta. Released by the Director without alteration.</figcaption>
-      </figure>
-      <dl class="figures">
-        <div><dt>193</dt><dd>science units received: 64 from the thermometer, 129 from the barometer</dd></div>
-        <div><dt>3 h</dt><dd>of radio link, until Vesta turned the relay carrier out of sight of Gael</dd></div>
-        <div><dt>5 h 16 m</dt><dd>of surface operation before the probe was lost</dd></div>
-        <div><dt>16 days</dt><dd>from liftoff to touchdown, in six-hour Gael days</dd></div>
-      </dl>
-    </div>
-
-    <div class="phases">
-      <div>
-        <h3>Launch</h3>
-        <p class="intro" style="margin-bottom:24px">Tianwen-1 flew a full test flight first. The test and the maiden voyage both went to plan.</p>
-        <ol class="timeline">
-          <li class="key"><time>T+0:00</time><span>Liftoff on all nine booster engines, heading due east</span></li>
-          <li><time>T+0:52</time><span>Maximum aerodynamic pressure, 31 kPa at 11.8 km</span></li>
-          <li><time>T+2:24</time><span>Booster cutoff at 46 km and 1,940 m/s, stage separation</span></li>
-          <li><time>T+2:31</time><span>Perseus upper-stage ignition</span></li>
-          <li><time>T+8:10</time><span>Parking orbit, 85 km at 8.6° inclination</span></li>
-          <li class="key"><time>Departure</time><span>1,637 m/s burn to Vesta. Perseus burned to empty; the Hawk carrier finished the job</span></li>
-        </ol>
+    <dl class="lp-figs">
+      <div><dt>193</dt><dd>science units sent home</dd></div>
+      <div><dt>5 h 16 m</dt><dd>working on the surface</dd></div>
+      <div><dt>3 h</dt><dd>of radio link through the carrier</dd></div>
+      <div><dt>16 days</dt><dd>from liftoff to touchdown</dd></div>
+    </dl>
+    <figure class="plate09">
+      <a href="assets/plate-09.png"><img src="assets/plate-09.png" width="889" height="554" loading="lazy" alt="Plate 09: brown ground under a dark, streaked sky on the surface of Vesta, framed by the Pechka console's surface-imaging screen."></a>
+      <figcaption>Plate 09. Surface camera C04, Abyss region, Vesta. Released by the Director without alteration.</figcaption>
+    </figure>
+    <p class="intro">Pechka 1 is a hardened pressure sphere with a barometer, a thermometer and cameras. It landed under air dense enough to crush it and kept working long enough to send everything home through the Hawk carrier overhead.</p>
+    <details class="lp-record">
+      <summary>The flight, minute by minute</summary>
+      <div class="phases">
+        <div>
+          <h3>Launch</h3>
+          <ol class="timeline">
+            <li class="key"><time>T+0:00</time><span>Liftoff on all nine booster engines, heading due east</span></li>
+            <li><time>T+0:52</time><span>Maximum aerodynamic pressure, 31 kPa at 11.8 km</span></li>
+            <li><time>T+2:24</time><span>Booster cutoff at 46 km and 1,940 m/s, stage separation</span></li>
+            <li><time>T+2:31</time><span>Perseus upper-stage ignition</span></li>
+            <li><time>T+8:10</time><span>Parking orbit, 85 km at 8.6° inclination</span></li>
+            <li class="key"><time>Departure</time><span>1,637 m/s burn to Vesta. Perseus burned to empty; the Hawk carrier finished the job</span></li>
+          </ol>
+        </div>
+        <div>
+          <h3>Arrival and landing</h3>
+          <ol class="timeline">
+            <li><time>Arrival</time><span>Inserted above Vesta at 155 km, then crept down through the air in a tightening spiral</span></li>
+            <li class="key"><time>T+16d 05h 37m</time><span>Touchdown. Temperature, pressure and surface imaging returned through the carrier</span></li>
+            <li><time>T+17d 02h 37m</time><span>The carrier passed behind Vesta and the link to Gael closed</span></li>
+            <li><time>T+17d 04h 53m</time><span>Probe lost after 5 h 16 m on the surface</span></li>
+          </ol>
+        </div>
       </div>
-      <div>
-        <h3>Arrival and landing</h3>
-        <p class="intro" style="margin-bottom:24px">Mission clock in days and hours, six-hour Gael days.</p>
-        <ol class="timeline">
-          <li><time>Arrival</time><span>Inserted above Vesta at 155 km, then crept down through the air in a tightening spiral</span></li>
-          <li class="key"><time>T+16d 05h 37m</time><span>Touchdown. Temperature, pressure and surface imaging returned through the carrier</span></li>
-          <li><time>T+17d 02h 37m</time><span>The carrier passed behind Vesta and the link to Gael closed</span></li>
-          <li><time>T+17d 04h 53m</time><span>Probe lost after 5 h 16 m on the surface</span></li>
-        </ol>
-      </div>
-    </div>
+      <p class="lp-note">Tianwen-1 flew a full test flight first; the test and the maiden voyage both went to plan. Mission clock in six-hour Gael days.</p>
+    </details>
     <p class="verdict"><strong>Permanent record: complete mission success.</strong> Approved by the Director.</p>
   </div>
 </section>
 
-<section id="standing" aria-labelledby="standing-title">
+<section id="vehicles" class="lp-fleet" aria-labelledby="vehicles-title">
   <div class="wrap">
-    <h2 id="standing-title">What we have flown</h2>
-    <p class="intro">Every first here happened in flight, not on paper.</p>
-    <div class="table-wrap">
-      <table class="ledger">
-        <thead><tr><th scope="col">Where</th><th scope="col">Done</th><th scope="col">Still to win</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Vesta</th><td class="first">First landing on another planet. Science and a surface photograph returned.</td><td>A lander that survives longer under the pressure</td></tr>
-          <tr><th scope="row">Gael orbit</th><td class="first">Kir station, crewed, 374 parts at 115–126 km. Docking, spacewalks, relays and the first Kerblink satellites.</td><td>Refuelling in orbit</td></tr>
-          <tr><th scope="row">Iota</th><td class="first">Crewed landing and return, a rover, the Hermes base and its research lab.</td><td>Long crew rotations</td></tr>
-          <tr><th scope="row">Ceti</th><td class="first">Probe landing, flyby and return.</td><td>A crewed landing</td></tr>
-          <tr><th scope="row">Reuse</th><td class="first">Booster B1002 flew ten times and landed nine.</td><td>A downrange landing and a recovered second stage</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<section id="vehicles" aria-labelledby="vehicles-title">
-  <div class="wrap">
-    <h2 id="vehicles-title">Vehicles</h2>
-    <p class="intro">Designed in house and flown again whenever they come home.</p>
-    <div class="vehicles">
-      <article class="vehicle">
-        <h3>Phoenix 10</h3>
-        <p>Our reusable launcher, about half the size of a Falcon 9. After separation the booster flips, burns back and lands itself on the pad or the VAB helipad, guided by our Niepan flight software. A Jingwei counter on every booster keeps its serial, flights and landings.</p>
-        <dl><div><dt>Booster engines</dt><dd>9, methalox</dd></div><div><dt>Landing</dt><dd>Pad or helipad</dd></div><div><dt>Record</dt><dd>B1002, 10 flights</dd></div></dl>
-      </article>
-      <article class="vehicle">
+    <h2 id="vehicles-title">The vehicle that did it</h2>
+    <p class="intro">Every drawing on this page comes from the real craft file, part by part. Designed in house and flown again whenever it comes home.</p>
+    <ol class="lp-stages">
+      <li style="--len:100%">
+        <img src="assets/wire/booster.png" width="1412" height="172" loading="lazy" alt="Line drawing of the Phoenix 10 booster lying on its side: nine engines, landing legs and grid fins.">
+        <h3>Phoenix 10 booster</h3>
+        <p>Nine methalox engines. After separation it flips, burns back and lands on the pad or the VAB helipad under our Niepan flight software. Booster B1002 has flown ten times and landed nine.</p>
+      </li>
+      <li style="--len:70.4%">
+        <img src="assets/wire/bifang.png" width="994" height="134" loading="lazy" alt="Line drawing of the Bifang upper stage and its Perseus engine.">
         <h3>Bifang</h3>
-        <p>A hydrogen-oxygen upper stage on a single Perseus vacuum engine, named for the one-legged fire bird of the old Chinese bestiaries. It finishes the climb to orbit, then starts the burn out to the planets.</p>
-        <dl><div><dt>Engine</dt><dd>Perseus, vacuum</dd></div><div><dt>Propellant</dt><dd>Hydrolox</dd></div><div><dt>Parking orbit</dt><dd>85 km</dd></div></dl>
-      </article>
-      <article class="vehicle">
+        <p>Hydrogen-oxygen upper stage on one Perseus vacuum engine, named for the one-legged fire bird. It finishes the climb to an 85 km parking orbit and starts the burn to the planets.</p>
+      </li>
+      <li style="--len:37.3%">
+        <img src="assets/wire/hawk.png" width="527" height="176" loading="lazy" alt="Line drawing of the Hawk carrier with its solar panels, dish and Hawk engine.">
         <h3>Hawk carrier</h3>
-        <p>A small methalox stage that completes the departure burn, carries a lander across, and stays overhead as its relay.</p>
-        <dl><div><dt>Engine</dt><dd>MU-018 Hawk</dd></div><div><dt>Efficiency</dt><dd>382 s in vacuum</dd></div><div><dt>Relay dish</dt><dd>15 Gm</dd></div></dl>
-      </article>
-      <article class="vehicle">
-        <h3>Pechka</h3>
-        <p>A hardened pressure sphere nicknamed the Kettle, built to survive entry, land on the Hearth Pad and report from the surface for as long as the air allows.</p>
-        <dl><div><dt>Instruments</dt><dd>Barometer, thermometer, cameras</dd></div><div><dt>Descent</dt><dd>High-altitude parachute</dd></div><div><dt>First flight</dt><dd>Vesta, landed</dd></div></dl>
-      </article>
-      <article class="vehicle">
-        <h3>Kir station</h3>
-        <p>Our crewed home in Gael orbit. Next it becomes a fuel depot, so ships headed for the planets can fill up in orbit.</p>
-        <dl><div><dt>Size</dt><dd>374 parts</dd></div><div><dt>Orbit</dt><dd>115–126 km, 8.7°</dd></div><div><dt>Crew</dt><dd>Continuous</dd></div></dl>
-      </article>
+        <p>A small methalox stage on one MU-018 Hawk, 382 s in vacuum. It finishes the departure burn, carries the lander across and stays overhead as its relay.</p>
+      </li>
+    </ol>
+    <div class="lp-pair">
+      <figure>
+        <img src="assets/wire/pechka.png" width="496" height="520" loading="lazy" alt="Line drawing of Pechka 1: a pressure sphere on a heat shield, with antennas and a parachute housing on top.">
+        <figcaption><h3>Pechka</h3><p>The Kettle. A hardened pressure sphere built to survive entry and report from the surface for as long as the air allows.</p></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/wire/kir.png" width="676" height="524" loading="lazy" alt="Line drawing of Kir station: long modules joined at a central node, with radiators and solar panels.">
+        <figcaption><h3>Kir station</h3><p>Our crewed home in Gael orbit, 374 parts at 115–126 km. Next it becomes a fuel depot.</p></figcaption>
+      </figure>
     </div>
     <p class="more"><a class="btn" href="blueprints.html">Turn them over in 3D</a></p>
   </div>
@@ -158,62 +147,62 @@
 
 <figure class="band" aria-label="Photograph">
   <div class="frame"><picture>
-    <source media="(max-width: 699px)" srcset="assets/horizon-m.jpg">
-    <img src="assets/horizon.jpg" loading="lazy" decoding="async" alt="The Phoenix 10 booster coasting above a sea of cloud at dusk, moments after releasing its second stage." width="1310" height="716">
+    <source media="(max-width: 699px)" srcset="assets/ascent-m.jpg">
+    <img src="assets/ascent.jpg" loading="lazy" decoding="async" alt="A Phoenix 10 climbing through the cloud tops above a green coastline, its exhaust a bright white streak." width="950" height="710">
   </picture></div>
-  <figcaption class="wrap">Phoenix 10 booster coasting after stage separation, 20 km over Gael.</figcaption>
+  <figcaption class="wrap">Phoenix 10 climbing through the cloud tops over Gael.</figcaption>
 </figure>
+
+<section id="standing" aria-labelledby="standing-title">
+  <div class="wrap">
+    <h2 id="standing-title">What we have flown</h2>
+    <table class="ledger">
+      <thead><tr><th scope="col">Where</th><th scope="col">Done</th><th scope="col">Still to win</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">Vesta</th><td class="first">First landing on another planet, with science and a surface photograph.</td><td>A lander that survives longer</td></tr>
+        <tr><th scope="row">Gael orbit</th><td class="first">Kir station, crewed. Docking, spacewalks, relays and the first Kerblink satellites.</td><td>Refuelling in orbit</td></tr>
+        <tr><th scope="row">Iota</th><td class="first">Crewed landing and return, a rover, and the Hermes base and lab.</td><td>Long crew rotations</td></tr>
+        <tr><th scope="row">Ceti</th><td class="first">Probe landing, flyby and return.</td><td>A crewed landing</td></tr>
+        <tr><th scope="row">Reuse</th><td class="first">B1002 flew ten times and landed nine.</td><td>A downrange landing</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
 
 <section id="next" aria-labelledby="next-title">
   <div class="wrap">
     <h2 id="next-title">What we fly next</h2>
-    <p class="intro">In order of launch windows and the fuel each step needs.</p>
-    <ol class="next">
-      <li class="now"><h3>Refuel at Kir</h3><p>Dock Kir Fuel Module 1 and fill it from Phoenix 10 tanker flights. The first refuelling in orbit opens the way to crewed trips further out.</p></li>
-      <li><h3>Complete Kerblink</h3><p>Four more satellite groups, evenly spaced, for the first complete constellation around Gael.</p></li>
+    <ol class="lp-next">
+      <li class="now"><h3>Refuel at Kir</h3><p>Dock Fuel Module 1 and fill it from tanker flights: the first refuelling in orbit.</p></li>
+      <li><h3>Complete Kerblink</h3><p>Four more satellite groups for a full constellation around Gael.</p></li>
       <li><h3>Chang'e-Ceti</h3><p>The first crew to land on Ceti.</p></li>
-      <li><h3>Zhurong to Niven</h3><p>A lander and rover on the desert world, braking in its thin air.</p></li>
+      <li><h3>Zhurong to Niven</h3><p>A lander and rover on the desert world.</p></li>
       <li><h3>Tellumo flyby</h3><p>The first look at the heavy water world and its moon Lili.</p></li>
-      <li><h3>Grannus probe</h3><p>The first craft to fly past the planets of our second star.</p></li>
+      <li><h3>Grannus probe</h3><p>The first craft past the planets of our second star.</p></li>
     </ol>
-    <p class="more"><a class="btn" href="future.html">See the ten-year plan and the next station</a></p>
+    <p class="more"><a class="btn" href="future.html">See the ten-year plan</a></p>
   </div>
 </section>
 
-<section id="rival" aria-labelledby="rival-title">
+<section id="shareholders" class="lp-rival" aria-labelledby="rival-title">
   <div class="wrap split">
     <div>
       <h2 id="rival-title">The other side</h2>
-      <p>The Americans are moving fast. They fly two launcher families, hold a treasury the size of ours, and are building a modular station, Horizon, one module at a time. Their first docking, with advanced docking ports, is close.</p>
-      <p>Nothing they have flown has left their home planet's orbit. Ours has landed on another one.</p>
+      <p>The Americans fly two launcher families and are building a modular station, Horizon. Nothing they have flown has left their home planet's orbit. Ours has landed on another one.</p>
+      <p class="callout">Our answer: refuel in orbit before their depot flies, and keep Kir crewed without a break.</p>
     </div>
-    <div class="callout">
-      <p>Our answer: refuel in orbit before their depot design flies, and keep Kir crewed without a break.</p>
+    <div>
+      <h3>For shareholders</h3>
+      <p>The Party sets the goals; investors pay for the rockets, and paying contracts fly first. Your payload rides on a booster that has flown before and will fly again.</p>
     </div>
   </div>
 </section>
 
-<section id="shareholders" aria-labelledby="sh-title">
-  <div class="wrap split">
-    <div>
-      <h2 id="sh-title">For shareholders</h2>
-    </div>
-    <div>
-      <p>The Party sets the goals. Investors pay for the rockets, and paying contracts fly first. Every big mission takes a customer along when it can: satellites for Gael's polar orbits, cargo to Kir, survey work on the way out.</p>
-      <p>Your payload rides on a booster that has flown before and will fly again.</p>
-    </div>
-  </div>
-</section>
-
-<figure class="band" aria-label="Photograph">
-  <div class="frame"><picture>
+<div class="cta lp-cta">
+  <div class="lp-cta-bg" aria-hidden="true"><picture>
     <source media="(max-width: 699px)" srcset="assets/limb-m.jpg">
-    <img src="assets/limb.jpg" loading="lazy" decoding="async" alt="A small KOSMOS spacecraft firing its engine above the blue curve of Gael, against a black, star-filled sky." width="1680" height="700">
+    <img src="assets/limb.jpg" loading="lazy" alt="" width="1680" height="700">
   </picture></div>
-  <figcaption class="wrap">An early KOSMOS flight in low Gael orbit, where the program began.</figcaption>
-</figure>
-
-<div class="cta">
   <div class="wrap">
     <h2>See where KOSMOS goes next.</h2>
     <a class="btn primary" href="roadmap.html">Read the roadmap</a>
