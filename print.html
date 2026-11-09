@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>KOSMOS print</title>
+<style>
+  html, body { margin: 0; background: #000; color: #f2f2ef; font-family: "Archivo", "Inter", system-ui, sans-serif; }
+  .sheet { position: relative; width: 1600px; height: 1000px; overflow: hidden;
+    background: radial-gradient(ellipse at 40% 45%, #0b0e12, #000 75%); }
+  .grid { position: absolute; inset: 0; background-image:
+      linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 40px 40px; }
+  canvas { position: absolute; }
+  #iso { left: 30px; top: 30px; width: 1060px; height: 700px; }
+  #side { left: 1110px; top: 30px; width: 460px; height: 700px; border-left: 1px solid #1d2126; }
+  .viewlabel { position: absolute; font-size: 13px; color: #6b7178; font-weight: 600; }
+  .block { position: absolute; left: 30px; right: 30px; bottom: 30px; height: 220px; border-top: 1px solid #2c3137;
+    display: grid; grid-template-columns: 1.3fr 1fr 1fr; gap: 40px; padding-top: 22px; }
+  h1 { margin: 0; font-size: 44px; font-weight: 800; letter-spacing: -.01em; line-height: 1; }
+  .kind { color: #e0b24f; font-weight: 600; font-size: 16px; margin: 8px 0 0; }
+  .role { color: #b9bec6; font-size: 15px; line-height: 1.45; margin: 10px 0 0; max-width: 46ch; }
+  dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 5px 18px; font-size: 15px; align-content: start; }
+  dt { color: #6b7178; } dd { margin: 0; font-variant-numeric: tabular-nums; }
+  .legend { font-size: 14px; display: grid; gap: 6px; align-content: start; }
+  .legend span { display: inline-block; width: 22px; height: 3px; vertical-align: middle; margin-right: 10px; }
+  .mark { position: absolute; right: 30px; top: 26px; display: flex; align-items: center; gap: 10px; font-weight: 800; letter-spacing: .14em; font-size: 15px; }
+  .mark img { width: 34px; height: 34px; }
+  .scale { position: absolute; left: 60px; top: 700px; font-size: 12px; color: #6b7178; }
+  .scale i { display: inline-block; height: 2px; background: #6b7178; vertical-align: middle; margin-right: 8px; }
+</style>
+</head>
+<body>
+<div class="sheet" id="sheet">
+  <div class="grid"></div>
+  <canvas id="iso"></canvas><canvas id="side"></canvas>
+  <div class="viewlabel" style="left:44px;top:40px">Perspective</div>
+  <div class="viewlabel" id="sidelabel" style="left:1126px;top:40px">Side elevation</div>
+  <div class="scale" id="scale"></div>
+  <div class="mark"><img src="assets/insignia.png" alt="">KOSMOS</div>
+  <div class="block">
+    <div><h1 id="t"></h1><p class="kind" id="k"></p><p class="role" id="r"></p></div>
+    <dl id="specs"></dl>
+    <div class="legend" id="legend"></div>
+  </div>
+</div>
+<script src="vendor/three.min.js"></script>
+<script src="concepts.js"></script>
+<script>
+(function () {
+  var q = new URLSearchParams(location.search), key = q.get('key');
+  var C = window.KOSMOS_CONCEPTS[key], parts = C.build();
+  var info = (window.PRINT_INFO || {});
+  var STAGE_COLS = [0xf2f2ef, 0xe0b24f, 0xd3232a, 0x7fa7c9, 0x9ccf9a, 0xc79be0, 0x8f959d, 0xf0a060];
+  var stages = []; parts.forEach(function (p) { var s = p[2] || p[1]; if (stages.indexOf(s) < 0) stages.push(s); });
+  function geo(shape, r, h) {
+    switch (shape) {
+      case 'cone': return new THREE.CylinderGeometry(r * 0.45, r, h, 10, 1, true);
+      case 'pod': return new THREE.CylinderGeometry(r * 0.42, r, h, 12);
+      case 'disc': return new THREE.CylinderGeometry(r, r, Math.max(h, 0.12), 14);
+      case 'panel': return new THREE.BoxGeometry(Math.max(r * 1.6, 0.4), Math.max(h, 0.3), 0.04);
+      case 'wing': return new THREE.BoxGeometry(r * 2, 0.05, h);
+      case 'leg': return new THREE.BoxGeometry(0.12, Math.max(h, 0.6), 0.12);
+      case 'fin': return new THREE.BoxGeometry(0.06, h, r);
+      case 'dish': return new THREE.CylinderGeometry(r, r * 0.15, Math.max(h * 0.6, 0.12), 12, 1, true);
+      case 'box': return new THREE.BoxGeometry(r * 2, Math.max(h, 0.08), r * 2);
+      case 'sphere': return new THREE.SphereGeometry(r, 10, 7);
+      case 'oct': return new THREE.CylinderGeometry(r, r, h, 8);
+      default: return new THREE.CylinderGeometry(r, r, Math.max(h, 0.05), r > 1.5 ? 14 : 10, h > r * 3 ? 3 : 1);
+    }
+  }
+  function model() {
+    var root = new THREE.Group();
+    parts.forEach(function (p) {
+      var g = geo(p[5], p[6], p[7]);
+      var col = STAGE_COLS[stages.indexOf(p[2] || p[1]) % STAGE_COLS.length];
+      var holder = new THREE.Group();
+      holder.add(new THREE.Mesh(g, new THREE.MeshBasicMaterial({ color: 0x000000, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 })));
+      var eg = p[5] === 'sphere' ? new THREE.WireframeGeometry(g) : new THREE.EdgesGeometry(g, 1);
+      holder.add(new THREE.LineSegments(eg, new THREE.LineBasicMaterial({ color: col, transparent: true, opacity: 0.9 })));
+      holder.position.set(p[3][0], p[3][1], -p[3][2]);
+      holder.quaternion.set(-p[4][0], -p[4][1], p[4][2], p[4][3]);
+      root.add(holder);
+    });
+    var box = new THREE.Box3().setFromObject(root); root.position.sub(box.getCenter(new THREE.Vector3()));
+    return { root: root, size: box.getSize(new THREE.Vector3()) };
+  }
+  function render(canvas, setup) {
+    var w = canvas.clientWidth, h = canvas.clientHeight;
+    var r = new THREE.WebGLRenderer({ canvas: canvas, antialias: true, alpha: true, preserveDrawingBuffer: true });
+    r.setPixelRatio(2); r.setSize(w, h, false);
+    var s = new THREE.Scene(), m = model(); s.add(m.root);
+    var cam = setup(m.size, w / h); r.render(s, cam);
+    return m.size;
+  }
+  var size = render(document.getElementById('iso'), function (sz, asp) {
+    var cam = new THREE.PerspectiveCamera(24, asp, 0.1, 5000), t = Math.tan(12 * Math.PI / 180);
+    var wide = Math.max(sz.x, sz.z), tall = sz.y > wide * 2.2;
+    var dir = tall ? new THREE.Vector3(0.62, 0.22, 0.75) : new THREE.Vector3(0.55, 0.62, 0.78);
+    dir.normalize();
+    var d = Math.max(sz.y / 2 / t, Math.max(sz.x, sz.z) / 2 / (t * asp)) * 1.18 + wide / 2;
+    cam.position.copy(dir.multiplyScalar(d)); cam.lookAt(0, 0, 0); return cam;
+  });
+  render(document.getElementById('side'), function (sz, asp) {
+    var plan = Math.max(sz.x, sz.z) > sz.y * 1.6 && Math.max(sz.x, sz.z) > 25;
+    var vy = plan ? sz.z : sz.y;
+    var hw = Math.max(sz.x / 2 * 1.15, vy / 2 * 1.15 * asp), hh = hw / asp;
+    var cam = new THREE.OrthographicCamera(-hw, hw, hh, -hh, -1000, 1000);
+    if (plan) { cam.position.set(0, 100, 0); cam.up.set(0, 0, -1); document.getElementById('sidelabel').textContent = 'Plan view, from above'; }
+    else cam.position.set(0, 0, 100);
+    cam.lookAt(0, 0, 0); window.__sideHW = hw; window.__plan = plan; return cam;
+  });
+  // scale bar for the side view
+  var hw = window.__sideHW, pxPerM = 460 / (2 * hw), nice = [1, 2, 5, 10, 20, 50];
+  var len = nice.filter(function (n) { return n * pxPerM < 200; }).pop() || 1;
+  var sc = document.getElementById('scale'); sc.style.left = '1130px';
+  sc.innerHTML = '<i style="width:' + (len * pxPerM).toFixed(0) + 'px"></i>' + len + ' m, ' + (window.__plan ? 'plan view' : 'side view');
+  document.getElementById('t').textContent = C.title;
+  document.getElementById('k').textContent = C.kind;
+  document.getElementById('r').textContent = q.get('role') || '';
+  var specs = [['Height', size.y.toFixed(1) + ' m'], ['Width', Math.max(size.x, size.z).toFixed(1) + ' m'], ['Drawn parts', parts.length]];
+  (q.get('specs') || '').split('|').filter(Boolean).forEach(function (s) { var kv = s.split('='); specs.push([kv[0], kv[1]]); });
+  var dl = document.getElementById('specs');
+  specs.forEach(function (s) { var dt = document.createElement('dt'), dd = document.createElement('dd'); dt.textContent = s[0]; dd.textContent = s[1]; dl.appendChild(dt); dl.appendChild(dd); });
+  var lg = document.getElementById('legend');
+  stages.forEach(function (s, i) { var d = document.createElement('div'); d.innerHTML = '<span style="background:#' + STAGE_COLS[i % STAGE_COLS.length].toString(16).padStart(6, '0') + '"></span>'; d.appendChild(document.createTextNode(s)); lg.appendChild(d); });
+  document.body.dataset.ready = '1';
+})();
+</script>
+</body>
+</html>

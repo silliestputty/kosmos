@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KOSMOS | Future plan</title>
-<meta name="description" content="The KOSMOS future plan: missions phase by phase, expanding Kir station, and Tiangong-K, the station that replaces it.">
+<meta name="description" content="The KOSMOS future plan: missions phase by phase, expanding Kir station, and Guanghan, the station that replaces it.">
 <meta property="og:title" content="KOSMOS: First on Vesta">
 <meta property="og:description" content="Pechka 1 fell through the clouds of Vesta, landed and sent home 193 science units and a surface photograph.">
 <meta property="og:image" content="https://silliestputty.github.io/kosmos/assets/plate-09.png">
@@ -32,6 +32,7 @@
       <a href="./#shareholders">Shareholders</a>
       <a href="roadmap.html">Roadmap</a>
       <a href="blueprints.html">Hardware</a>
+      <a href="designs.html">Designs</a>
       <a href="tech.html">Tech tree</a>
       <a href="future.html" aria-current="page">Future</a>
     </nav>
@@ -89,13 +90,13 @@
           <li>Gratian orbiter, the farthest planet reached</li>
           <li>Grannus probe to the second star's planets, on a nuclear upper stage</li>
         </ul>
-        <p class="gate">Gate: Tiangong-K depot fully operational</p>
+        <p class="gate">Gate: Guanghan depot fully operational</p>
       </article>
       <article class="phase">
         <p class="when">Phase 5</p>
         <h3>Crew on another planet</h3>
         <ul>
-          <li>Crewed Niven landing, fuelled at Tiangong-K</li>
+          <li>Crewed Niven landing, fuelled at Guanghan</li>
           <li>A permanent Niven outpost</li>
         </ul>
         <p class="gate">Gate: first crew on another planet</p>
@@ -115,52 +116,41 @@
     <h2 id="options">Three ways forward</h2>
     <div class="options">
       <article><h3>Extend Kir</h3><p>Dock Fuel Module 1, add a science lab, and merge small modules into fewer large ones. Cheap and immediate, and wins the refuelling race now. It cannot fix the part count for good.</p></article>
-      <article class="pick"><h3>Build Tiangong-K, then retire Kir</h3><p>A new station of a few large modules, built while Kir stays crewed. Kir hands over its crew and fuel module, then is retired.</p></article>
+      <article class="pick"><h3>Build Guanghan, then retire Kir</h3><p>A new station of a few large modules, built while Kir stays crewed. Kir hands over its crew and fuel module, then is retired.</p></article>
       <article><h3>Outposts beyond Gael</h3><p>Small stations where the missions are: Iota Gateway first, a Niven station in phase 5. They complement a main station; they do not replace it.</p></article>
     </div>
 
-    <h2 id="tiangong">Tiangong-K</h2>
-    <p>Five large modules instead of hundreds of small parts. Built in a 150 km circular orbit at 8.6°, the plane a due-east launch reaches directly, so every Phoenix 10 flight can rendezvous without a plane change.</p>
-    <figure class="station">
-      <svg viewBox="0 0 960 420" role="img" aria-labelledby="stTitle stDesc">
-        <title id="stTitle">Tiangong-K layout</title>
-        <desc id="stDesc">A central core with five modules: habitat forward, depot aft, laboratory to port, tug dock to starboard, and two solar truss wings.</desc>
-        <defs><marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#8f959d"/></marker></defs>
-        <g class="truss"><rect x="90" y="200" width="780" height="20"/></g>
-        <g class="solar"><rect x="96" y="120" width="150" height="70"/><rect x="96" y="230" width="150" height="70"/><rect x="714" y="120" width="150" height="70"/><rect x="714" y="230" width="150" height="70"/></g>
-        <g class="mod depot"><rect x="300" y="178" width="130" height="64" rx="10"/><text x="365" y="207">Liangcang</text><text x="365" y="225" class="s">fuel depot</text></g>
-        <g class="mod core"><rect x="440" y="168" width="80" height="84" rx="10"/><text x="480" y="207">Tianhe</text><text x="480" y="225" class="s">core</text></g>
-        <g class="mod hab"><rect x="530" y="178" width="140" height="64" rx="10"/><text x="600" y="207">Wentian</text><text x="600" y="225" class="s">habitat, crew 8</text></g>
-        <g class="mod lab"><rect x="435" y="56" width="90" height="104" rx="10"/><text x="480" y="104">Mengtian</text><text x="480" y="122" class="s">lab</text></g>
-        <g class="mod tug"><rect x="435" y="260" width="90" height="104" rx="10"/><text x="480" y="308">Tug</text><text x="480" y="326" class="s">dock</text></g>
-        <g class="port"><circle cx="680" cy="210" r="7"/><circle cx="290" cy="210" r="7"/><circle cx="480" cy="372" r="7"/></g>
-        <text x="728" y="382" class="lbl">Docking ports: forward, aft, nadir</text>
-        <text x="96" y="104" class="lbl">Solar truss</text>
-        <path d="M890 210 h40" stroke="#8f959d" stroke-width="2" marker-end="url(#arr)"/><text x="885" y="196" class="lbl">Forward</text>
-      </svg>
-      <figcaption>Planned layout. Part budget: under 150 parts for the whole station, against Kir's 374.</figcaption>
-    </figure>
+    <h2 id="guanghan">Guanghan station</h2>
+    <p>Named for the moon palace of the old stories, Guanghan replaces both Kir and the earlier Guanghan plan. It is built big, because the launch cadence can carry it: a spine of large modules under a 64 m power truss, a fuel depot at the back and a docking hub at the front. It flies at 180 km and 8.6°, the plane a due-east launch reaches directly, above Kir's traffic.</p>
+    <figure class="print"><a href="designs.html#guanghan"><img src="assets/prints/guanghan.jpg" width="1600" height="1000" loading="lazy" alt="Wireframe drawing of Guanghan station: a long horizontal spine of cylindrical modules crossed by a power truss carrying twelve solar wings, with a depot cluster at one end and a docking hub at the other."></a>
+      <figcaption>Concept print. Turn it in 3D on the <a href="blueprints.html#guanghan">Hardware page</a>. Part budget: under 300, against Kir's 374.</figcaption></figure>
 
     <div class="table-wrap"><table>
-      <tr><th>Launch</th><th>Module</th><th>Role</th><th>Launcher</th></tr>
-      <tr><td>1</td><td>Tianhe core</td><td>Control, power, three docking ports. Habitable for a short-stay crew of two</td><td>Super Heavy</td></tr>
-      <tr><td>2</td><td>Liangcang depot</td><td>Large methalox and hydrogen tanks with boil-off cooling; fuels planetary ships</td><td>Super Heavy</td></tr>
-      <tr><td>3</td><td>Wentian habitat</td><td>Crew of eight, cupola, long-stay life support</td><td>Super Heavy</td></tr>
-      <tr><td>4</td><td>Mengtian lab</td><td>Processes samples from Iota, Ceti and beyond in orbit</td><td>Phoenix 10</td></tr>
-      <tr><td>5</td><td>Orbital tug</td><td>Reusable methalox tug: moves modules, ferries fuel, tows Kir's fuel module across</td><td>Phoenix 10</td></tr>
+      <tr><th>Flight</th><th>Payload</th><th>What it adds</th><th>Launcher</th></tr>
+      <tr><td>1</td><td>Guanghan core and central node</td><td>Control, life support for six, six docking ports</td><td>Super Heavy</td></tr>
+      <tr><td>2–3</td><td>Guishu truss, two halves</td><td>The 64 m power spine and its mast</td><td>Jinwu</td></tr>
+      <tr><td>4–6</td><td>Solar wings and radiators</td><td>Twelve 14 m solar wings, two radiator arrays</td><td>Jinwu</td></tr>
+      <tr><td>7</td><td>Liangcang methalox depot</td><td>The main fuel store for ships leaving Gael</td><td>Super Heavy</td></tr>
+      <tr><td>8</td><td>Hydrogen tanks and cross-feed truss</td><td>Hydrogen for Bifang-class and nuclear stages</td><td>Jinwu</td></tr>
+      <tr><td>9</td><td>Ukhvat tug</td><td>Moves modules and tankers between ports</td><td>Jinwu</td></tr>
+      <tr><td>10</td><td>Yutu laboratory</td><td>Processes samples from Iota, Ceti and beyond</td><td>Super Heavy</td></tr>
+      <tr><td>11–12</td><td>Crew habitats A and B</td><td>Four more crew each, fourteen in all</td><td>Super Heavy</td></tr>
+      <tr><td>13</td><td>Wu Gang workshop and arm</td><td>Spares, repairs and a 15 m station arm</td><td>Jinwu</td></tr>
+      <tr><td>14</td><td>Docking hub</td><td>Berths for crew ships, tankers and visiting craft</td><td>Jinwu</td></tr>
+      <tr><td>15</td><td>First long-stay crew</td><td>Samovar with three crew</td><td>Jinwu</td></tr>
     </table></div>
 
-    <h2 id="handover">From Kir to Tiangong-K</h2>
+    <h2 id="handover">From Kir to Guanghan</h2>
     <ol class="steps">
       <li><h3>Kir wins the refuelling race</h3><p>Fuel Module 1 docks at Kir and takes its first tanker load. This happens first, whatever else slips.</p></li>
-      <li><h3>Tianhe flies</h3><p>Research Heavier Rocketry and Large Volume Containment, test the Super Heavy, then launch the core uncrewed.</p></li>
-      <li><h3>Depot and habitat</h3><p>Liangcang and Wentian dock. The first long-stay crew moves in while Kir stays crewed.</p></li>
-      <li><h3>Handover</h3><p>Kir's crew transfers to Tiangong-K. The tug carries Kir's fuel module across and docks it to the depot.</p></li>
+      <li><h3>The core flies</h3><p>Research Heavier Rocketry and Large Volume Containment, fly Jinwu and the Super Heavy, then launch the Guanghan core uncrewed.</p></li>
+      <li><h3>Power, depot and habitats</h3><p>The truss, the Liangcang depot and the habitats dock. The first long-stay crew moves in while Kir stays crewed.</p></li>
+      <li><h3>Handover</h3><p>Kir's crew transfers to Guanghan. The tug carries Kir's fuel module across and docks it to the depot.</p></li>
       <li><h3>Kir retires</h3><p>Kir is stripped of anything useful and deorbited over the ocean, ending the frame-rate cost for good.</p></li>
     </ol>
 
     <h2 id="rival">Against the Americans</h2>
-    <p>Their Citadel design needs eight launches for twelve crew. Tiangong-K needs five launches for eight, with a working fuel depot from the second launch. Their Reservoir depot is still a drawing; ours would already be fuelling ships for Niven.</p>
+    <p>Their Citadel design needs eight launches for twelve crew. Guanghan takes about fifteen, but it houses fourteen, has a working fuel depot from the seventh flight and a tug and arm to keep it running. Their Reservoir depot is still a drawing; ours would already be fuelling ships for Niven.</p>
   </div>
 </main>
 

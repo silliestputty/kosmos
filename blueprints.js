@@ -7,59 +7,8 @@
 
   // ---------- concept models (no craft file yet) ----------
   function P(title, group, pos, rot, shape, r, h) { return [title, group, null, pos, rot || [0, 0, 0, 1], shape, r, h, 0]; }
-  var X90 = [0.7071, 0, 0, 0.7071], Z90 = [0, 0, 0.7071, 0.7071];
-  function tiangong() {
-    var a = [];
-    a.push(P('Tianhe core module', 'Command', [0, 0, 0], X90, 'cyl', 2.1, 7));
-    a.push(P('Docking node', 'Couplings', [0, 0, 4.6], X90, 'cyl', 1.3, 2.2));
-    a.push(P('Liangcang fuel depot', 'Tanks', [0, 0, -9], X90, 'cyl', 2.4, 11));
-    a.push(P('Depot transfer ring', 'Couplings', [0, 0, -15.2], X90, 'cyl', 1.3, 1.4));
-    a.push(P('Wentian habitat, crew 8', 'Habitat', [0, 0, 11.5], X90, 'cyl', 2.1, 11.5));
-    a.push(P('Wentian cupola', 'Habitat', [0, 0, 18], X90, 'pod', 1.2, 1.6));
-    a.push(P('Mengtian laboratory', 'Science', [-6.2, 0, 4.6], Z90, 'cyl', 1.6, 8.5));
-    a.push(P('Tug berth', 'Couplings', [4.2, 0, 4.6], Z90, 'cyl', 1.1, 3.2));
-    a.push(P('Orbital tug', 'Tug', [8.2, 0, 4.6], Z90, 'cyl', 1.25, 4.2));
-    a.push(P('Tug engine', 'Engines', [11.0, 0, 4.6], [0, 0, 0.7071, 0.7071], 'cone', 0.9, 1.5));
-    a.push(P('Main truss', 'Structure', [0, 3.2, 0], Z90, 'box', 0.35, 34));
-    a.push(P('Truss mast', 'Structure', [0, 2.6, 0], null, 'box', 0.3, 1.4));
-    [-1, 1].forEach(function (s) {
-      [12, 16.5].forEach(function (d) {
-        a.push(P('Solar array', 'Power', [s * d, 3.2, 3.2], null, 'wing', 2.1, 6));
-        a.push(P('Solar array', 'Power', [s * d, 3.2, -3.2], null, 'wing', 2.1, 6));
-      });
-      a.push(P('Radiator panel', 'Thermal', [s * 6.5, 3.2, -9], null, 'wing', 1.4, 4));
-    });
-    a.push(P('Docking port, nadir', 'Couplings', [0, -2.6, 0], null, 'cyl', 0.8, 0.6));
-    return a;
-  }
-  function zhurong() {
-    var a = [];
-    a.push(P('Descent stage', 'Structure', [0, 0, 0], null, 'oct', 2.2, 1.4));
-    [[1.4, 1.4], [-1.4, 1.4], [1.4, -1.4], [-1.4, -1.4]].forEach(function (p) {
-      a.push(P('Methalox tank', 'Tanks', [p[0] * 0.62, 0.35, p[1] * 0.62], null, 'sphere', 0.55, 1.1));
-      a.push(P('Landing leg', 'Landing gear', [p[0] * 1.35, -1.4, p[1] * 1.35], null, 'leg', 0.1, 2.6));
-    });
-    a.push(P('Descent engine', 'Engines', [0, -1.5, 0], null, 'cone', 0.8, 1.6));
-    a.push(P('Zhurong rover body', 'Rover', [0, 1.4, 0], null, 'box', 1.0, 0.6));
-    [-1, 1].forEach(function (s) { [-0.9, 0, 0.9].forEach(function (z) { a.push(P('Rover wheel', 'Rover', [s * 1.15, 1.1, z], Z90, 'cyl', 0.32, 0.25)); }); });
-    a.push(P('Rover mast camera', 'Science', [0, 2.3, 0.6], null, 'cyl', 0.08, 1.2));
-    a.push(P('Rover high-gain dish', 'Comms', [0, 2.2, -0.6], null, 'dish', 0.45, 0.3));
-    a.push(P('Rover solar wing', 'Power', [-1.6, 1.75, 0], Z90, 'box', 0.5, 1.4));
-    a.push(P('Rover solar wing', 'Power', [1.6, 1.75, 0], Z90, 'box', 0.5, 1.4));
-    return a;
-  }
-  function wentian() {
-    var a = [];
-    a.push(P('Rigid core', 'Structure', [0, 0, 0], null, 'cyl', 1.25, 10));
-    a.push(P('Inflatable shell, deployed', 'Habitat', [0, 0, 0], null, 'cyl', 3.4, 8));
-    [-3, -1, 1, 3].forEach(function (y) { a.push(P('Deck', 'Habitat', [0, y, 0], null, 'disc', 3.3, 0.12)); });
-    a.push(P('Forward docking port', 'Couplings', [0, 5.4, 0], null, 'cyl', 0.8, 0.8));
-    a.push(P('Aft berthing ring', 'Couplings', [0, -5.4, 0], null, 'cyl', 1.25, 0.8));
-    a.push(P('Cupola', 'Habitat', [0, 0, 3.6], X90, 'pod', 1.0, 1.0));
-    a.push(P('Radiator', 'Thermal', [4.6, 0, 0], null, 'wing', 1.2, 5));
-    a.push(P('Radiator', 'Thermal', [-4.6, 0, 0], null, 'wing', 1.2, 5));
-    return a;
-  }
+  var CON = window.KOSMOS_CONCEPTS || {};
+  function C(k) { return CON[k] ? CON[k].build : function () { return []; }; }
   function superheavy2() {
     var a = [];
     a.push(P('Booster tank, 12 m section', 'Tanks', [0, 6, 0], null, 'cyl', 3.75, 12));
@@ -88,15 +37,20 @@
     { key: 'pechka', section: 'Flown' },
     { key: 'iotan', section: 'Flown' },
     { key: 'sirius', section: 'Flown' },
-    { key: 'superheavy', section: 'Super Heavy' },
-    { key: 'superheavy2', section: 'Super Heavy', concept: superheavy2, title: 'Super Heavy, Block 2 concept' },
-    { key: 'zhurong', section: 'Landers', concept: zhurong, title: 'Zhurong lander concept (Niven)' },
-    { key: 'fuelmod', section: 'Stations and habitats' },
-    { key: 'kriroda', section: 'Stations and habitats' },
-    { key: 'odin', section: 'Stations and habitats' },
-    { key: 'wentian', section: 'Stations and habitats', concept: wentian, title: 'Wentian habitat concept' },
-    { key: 'tiangong', section: 'Stations and habitats', concept: tiangong, title: 'Tiangong-K station concept' }
+    { key: 'jinwu', section: 'Launchers', concept: C('jinwu'), title: 'Jinwu launcher' },
+    { key: 'superheavy', section: 'Launchers' },
+    { key: 'superheavy2', section: 'Launchers', concept: superheavy2, title: 'Super Heavy, Block 2' },
+    { key: 'samovar', section: 'Spacecraft', concept: C('samovar'), title: 'Samovar crew ship' },
+    { key: 'bidon', section: 'Spacecraft', concept: C('bidon'), title: 'Bidon tanker' },
+    { key: 'ukhvat', section: 'Spacecraft', concept: C('ukhvat'), title: 'Ukhvat tug' },
+    { key: 'zhurong', section: 'Landers', concept: C('zhurong'), title: 'Zhurong lander and rover' },
+    { key: 'pechka2', section: 'Landers', concept: C('pechka2'), title: 'Pechka 2' },
+    { key: 'guanghan', section: 'Stations', concept: C('guanghan'), title: 'Guanghan station' },
+    { key: 'fuelmod', section: 'Stations' },
+    { key: 'kriroda', section: 'Stations' },
+    { key: 'odin', section: 'Stations' }
   ];
+
   var KIND = { pechka: 'Flown to Vesta', iotan: 'Flown to Iota', sirius: 'Flown', kir: 'In orbit', tianwen: 'Flown', superheavy: 'In development', fuelmod: 'Ready to fly', kriroda: 'Flown, docked at Kir', odin: 'Flown, docked at Kir' };
 
   // ---------- three.js scene ----------
@@ -257,7 +211,7 @@
   var menu = document.getElementById('bp-menu');
   function select(key) {
     var item = catalog.filter(function (c) { return c.key === key; })[0];
-    var def = item.concept ? { title: item.title, kind: 'Concept', parts: item.concept() } : { title: data[key].title, kind: KIND[key] || data[key].kind, parts: data[key].parts };
+    var def = item.concept ? { title: item.title, kind: (CON[key] && CON[key].kind) || 'Concept', parts: item.concept() } : { title: data[key].title, kind: KIND[key] || data[key].kind, parts: data[key].parts };
     build(def);
     Array.prototype.forEach.call(menu.querySelectorAll('button'), function (b) { b.setAttribute('aria-current', String(b.dataset.key === key)); });
     if (history.replaceState) history.replaceState(null, '', '#' + key);

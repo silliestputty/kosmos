@@ -349,3 +349,19 @@ footer p { margin-right: auto; }
 .band.top { margin: -96px 0 8px; }
 .band.top img { height: clamp(260px, 44vw, 600px); -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%); mask-image: linear-gradient(180deg, #000 60%, transparent 100%); }
 .more { margin: 36px 0 0; }
+
+/* ---------- Design bureau ---------- */
+figure.print { margin: 24px 0 18px; }
+figure.print img { display: block; width: 100%; height: auto; border: 1px solid var(--line); background: #000; }
+figure.print figcaption { color: var(--gray); font-size: .92rem; margin-top: 10px; }
+.bureau .design { padding: 0; margin-top: 64px; }
+.bureau .design h3 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; margin: 0; }
+.bureau .etym { color: var(--gold); margin: 6px 0 0; font-weight: 600; }
+.bureau .specs { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px 28px; margin: 18px 0; }
+.bureau .specs dt { color: var(--gray); font-size: .85rem; }
+.bureau .specs dd { margin: 2px 0 0; font-weight: 600; }
+.bureau .why { color: #d6d6d2; }
+.bureau .steps { padding-left: 1.4em; }
+.bureau .steps li { margin: 0 0 18px; }
+.bureau .steps h3 { font-size: 1.15rem; margin: 0 0 4px; }
+.bureau .steps p { margin: 0; }
