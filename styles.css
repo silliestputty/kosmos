@@ -149,3 +149,6 @@ footer p { margin: 0; max-width: 70ch; color: var(--gray); font-size: .92rem; }
   .nav nav a { font-size: .88rem; }
   .ledger tbody th { white-space: normal; }
 }
+@media (max-width: 900px) {
+  .hero::after { background: linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.2) 18%, rgba(0,0,0,.78) 42%, rgba(0,0,0,.95) 70%, #000 100%); }
+}
