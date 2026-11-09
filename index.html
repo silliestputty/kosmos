@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<script>document.documentElement.classList.add("js")</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>KOSMOS | First on Vesta</title>
 <meta name="description" content="KOSMOS landed Pechka 1 on Vesta: the first landing on another planet. Reusable Phoenix 10 rockets, Kir station, and what we fly next.">
@@ -40,8 +41,11 @@
 </header>
 
 <main id="main">
-<section class="hero" aria-labelledby="hero-title" style="padding:0">
-  <img class="bg" src="assets/ascent.jpg" fetchpriority="high" alt="A Phoenix 10 climbing through the cloud tops above a green coastline, its exhaust a bright white streak." width="950" height="710">
+<section class="hero" aria-labelledby="hero-title">
+  <div class="media"><picture>
+    <source media="(max-width: 899px)" srcset="assets/ascent-m.jpg" width="560" height="740">
+    <img class="bg" src="assets/ascent.jpg" fetchpriority="high" alt="A Phoenix 10 climbing through the cloud tops above a green coastline, its exhaust a bright white streak." width="950" height="710">
+  </picture></div>
   <div class="wrap">
     <p class="status">Mission complete: Pechka 1</p>
     <h1 id="hero-title">First on Vesta.</h1>
@@ -153,7 +157,10 @@
 </section>
 
 <figure class="band" aria-label="Photograph">
-  <img src="assets/horizon.jpg" loading="lazy" alt="The Phoenix 10 booster coasting above a sea of cloud at dusk, moments after releasing its second stage." width="1310" height="716">
+  <div class="frame"><picture>
+    <source media="(max-width: 699px)" srcset="assets/horizon-m.jpg">
+    <img src="assets/horizon.jpg" loading="lazy" decoding="async" alt="The Phoenix 10 booster coasting above a sea of cloud at dusk, moments after releasing its second stage." width="1310" height="716">
+  </picture></div>
   <figcaption class="wrap">Phoenix 10 booster coasting after stage separation, 20 km over Gael.</figcaption>
 </figure>
 
@@ -199,7 +206,10 @@
 </section>
 
 <figure class="band" aria-label="Photograph">
-  <img src="assets/limb.jpg" loading="lazy" alt="A small KOSMOS spacecraft firing its engine above the blue curve of Gael, against a black, star-filled sky." width="1680" height="700">
+  <div class="frame"><picture>
+    <source media="(max-width: 699px)" srcset="assets/limb-m.jpg">
+    <img src="assets/limb.jpg" loading="lazy" decoding="async" alt="A small KOSMOS spacecraft firing its engine above the blue curve of Gael, against a black, star-filled sky." width="1680" height="700">
+  </picture></div>
   <figcaption class="wrap">An early KOSMOS flight in low Gael orbit, where the program began.</figcaption>
 </figure>
 
