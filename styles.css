@@ -275,3 +275,77 @@ footer p { margin-right: auto; }
 @media (max-width: 900px) { .options { grid-template-columns: 1fr; } }
 .phase h3, .options h3, .steps h3, .buy h3 { margin-top: 0; }
 .more { margin-top: 28px; }
+
+/* ---------- Hardware (wireframe blueprints) ---------- */
+.bp { padding-top: 96px; }
+.bp-head { max-width: 1240px; }
+.bp-head h1 { font-size: clamp(40px, 6vw, 76px); font-stretch: 112%; font-weight: 800; letter-spacing: -0.02em; margin: 0 0 12px; }
+.bp-head p { color: var(--grey, #9aa0a6); max-width: 64ch; margin: 0 0 28px; }
+.bp-shell { display: grid; grid-template-columns: 230px minmax(0, 1fr) 210px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); min-height: 72vh; }
+.bp-menu, .bp-groups { padding: 18px 16px; overflow: auto; max-height: 82vh; }
+.bp-menu { border-right: 1px solid var(--line); }
+.bp-groups { border-left: 1px solid var(--line); }
+.bp-menu p, .bp-groups p { color: #6b7178; font-size: 12px; font-weight: 600; margin: 18px 0 6px; }
+.bp-menu p:first-child, .bp-groups p:first-child { margin-top: 0; }
+.bp-menu button { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; width: 100%; text-align: left; background: none; border: 0; border-left: 2px solid transparent; color: #c9cdd2; font: inherit; font-size: 14px; padding: 7px 10px; cursor: pointer; }
+.bp-menu button span { color: #e0b24f; font-size: 11px; font-weight: 600; }
+.bp-menu button:hover { color: #fff; background: #0c0e10; }
+.bp-menu button[aria-current="true"] { color: #fff; border-left-color: var(--red, #d3232a); background: #0c0e10; }
+.bp-view { position: relative; min-width: 0; background: radial-gradient(ellipse at 50% 45%, #0d1014, #000 72%); }
+.bp-stage { position: absolute; inset: 0; cursor: grab; touch-action: none; }
+.bp-stage:active { cursor: grabbing; }
+.bp-over { position: absolute; inset: 0; pointer-events: none; padding: 20px 22px; display: flex; flex-direction: column; justify-content: space-between; }
+.bp-id h2 { font-size: 22px; font-stretch: 105%; margin: 0; }
+.bp-id p { color: #e0b24f; font-size: 13px; font-weight: 600; margin: 2px 0 10px; }
+.bp-id dl { display: flex; gap: 22px; margin: 0; }
+.bp-id dt { color: #6b7178; font-size: 11px; }
+.bp-id dd { margin: 0; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.bp-part { align-self: flex-start; max-width: 340px; background: rgba(0,0,0,.72); border-left: 2px solid #e0b24f; padding: 8px 12px; font-size: 13px; color: #9aa0a6; }
+.bp-part strong { display: block; color: #fff; font-size: 15px; }
+.bp-reset { pointer-events: auto; position: absolute; right: 18px; top: 18px; background: #000; color: #c9cdd2; border: 1px solid #2c3137; font: inherit; font-size: 13px; padding: 6px 12px; cursor: pointer; }
+.bp-reset:hover { color: #fff; border-color: #6b7178; }
+.chip { display: inline-flex; gap: 6px; align-items: baseline; margin: 0 6px 6px 0; background: none; border: 1px solid #2c3137; color: #c9cdd2; font: inherit; font-size: 13px; padding: 4px 10px; border-radius: 999px; cursor: pointer; }
+.chip span { color: #6b7178; font-size: 11px; font-variant-numeric: tabular-nums; }
+.chip:hover { border-color: #6b7178; color: #fff; }
+.chip[aria-pressed="true"] { border-color: var(--red, #d3232a); color: #fff; background: rgba(211,35,42,.14); }
+.bp-menu button:focus-visible, .chip:focus-visible, .bp-reset:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
+@media (max-width: 980px) {
+  .bp-shell { grid-template-columns: 1fr; }
+  .bp-menu { border-right: 0; border-bottom: 1px solid var(--line); display: flex; gap: 4px; overflow-x: auto; max-height: none; padding: 10px 16px; }
+  .bp-menu p { display: none; }
+  .bp-menu button { width: auto; white-space: nowrap; border-left: 0; border-bottom: 2px solid transparent; }
+  .bp-menu button[aria-current="true"] { border-bottom-color: var(--red, #d3232a); }
+  .bp-view { height: 64vh; }
+  .bp-groups { border-left: 0; border-top: 1px solid var(--line); max-height: none; }
+  .bp-part { max-width: 70%; }
+}
+
+/* tech tree zoom */
+.zoombar { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; margin: 0 0 12px; }
+.zoombar .hint { margin: 0; }
+.zoom { display: flex; align-items: center; gap: 4px; }
+.zoom button { background: #000; color: #c9cdd2; border: 1px solid #2c3137; font: inherit; font-size: 13px; min-width: 34px; height: 32px; padding: 0 10px; cursor: pointer; }
+.zoom button:hover { color: #fff; border-color: #6b7178; }
+.zoom button:focus-visible { outline: 2px solid #fff; outline-offset: 1px; }
+.zoom output { min-width: 52px; text-align: center; font-size: 13px; color: #9aa0a6; font-variant-numeric: tabular-nums; }
+.treebox.fit #tree { cursor: zoom-in; }
+.treebox.fit #tree .node text { opacity: .9; }
+
+/* ---------- Photography (elegance pass) ---------- */
+/* Hero: the ascent photograph sits at its own size on the right and dissolves into black, so it stays sharp. */
+.hero { background: #000; }
+.hero img.bg { left: auto; right: 0; width: min(68%, 1100px); object-position: 50% 45%;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 34%), linear-gradient(180deg, #000 70%, transparent 100%);
+  -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0%, #000 34%), linear-gradient(180deg, #000 70%, transparent 100%); mask-composite: intersect; }
+.hero::after { background: linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 16%); }
+@media (max-width: 760px) {
+  .hero img.bg { width: 100%; height: 62%; top: 0; bottom: auto; -webkit-mask-image: linear-gradient(180deg, #000 55%, transparent 100%); mask-image: linear-gradient(180deg, #000 55%, transparent 100%); }
+  .hero::after { background: linear-gradient(180deg, rgba(0,0,0,.5) 0%, rgba(0,0,0,0) 18%); }
+}
+.band { margin: clamp(72px, 10vw, 140px) 0 0; position: relative; }
+.band img { display: block; width: 100%; max-width: 1680px; margin: 0 auto; height: clamp(280px, 52vw, 720px); object-fit: cover;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 82%, transparent 100%); mask-image: linear-gradient(180deg, transparent 0%, #000 14%, #000 82%, transparent 100%); }
+.band figcaption { color: var(--gray); font-size: .92rem; margin-top: 10px; }
+.band.top { margin: -96px 0 8px; }
+.band.top img { height: clamp(260px, 44vw, 600px); -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent 100%); mask-image: linear-gradient(180deg, #000 60%, transparent 100%); }
+.more { margin: 36px 0 0; }
