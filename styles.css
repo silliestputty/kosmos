@@ -447,3 +447,5 @@ figure.print figcaption { color: var(--gray); font-size: .9rem; margin: 10px var
   .js .hero img.bg { transform: translate3d(0, calc(var(--h, 0) * 18%), 0) scale(calc(1 + var(--h, 0) * .05)); }
   .js .hero .wrap { opacity: calc(1 - var(--h, 0) * 1.4); transform: translate3d(0, calc(var(--h, 0) * -40px), 0); }
 }
+
+.bp-credit { color: #6b7178; font-size: .85rem; max-width: 80ch; margin-top: 16px; }
