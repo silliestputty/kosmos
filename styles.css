@@ -539,6 +539,10 @@ figure.print figcaption { color: var(--gray); font-size: .9rem; margin: 10px var
 .lp-log p { margin: 0; color: var(--dim); font-size: .95rem; }
 .lp-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; border: 1px solid #3a4047; color: #c9cdd2; }
 .lp-tag.test { border-color: var(--red); color: #fff; background: rgba(211,35,42,.14); }
+.lp-tag.live { border-color: #e8b04a; color: #1a1205; background: #e8b04a; }
+.lp-tag.live::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 6px 1px 0; border-radius: 50%; background: #1a1205; animation: lp-blink 1.6s ease-in-out infinite; }
+@keyframes lp-blink { 50% { opacity: .2; } }
+@media (prefers-reduced-motion: reduce) { .lp-tag.live::before { animation: none; } }
 @media (min-width: 720px) { .lp-log { grid-template-columns: 1fr 1fr; column-gap: 40px; } }
 @media (min-width: 1100px) { .lp-log { grid-template-columns: repeat(4, 1fr); } }
 
