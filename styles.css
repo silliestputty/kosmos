@@ -676,7 +676,7 @@ figure.print figcaption { color: var(--gray); font-size: .9rem; margin: 10px var
 .lp-xm { border-top: 1px solid var(--line); }
 .lp-xm .wrap { display: grid; gap: 28px; align-items: start; }
 .lp-xm-kicker { margin: 0 0 6px; color: var(--gold); font-weight: 700; font-size: .95rem; }
-.lp-xm h2 { margin-top: 0; font-size: clamp(3rem, 15vw, 7rem); font-weight: 900; font-variation-settings: "wdth" 62; line-height: .9; }
+.lp-xm h2 { margin-top: 0; font-size: clamp(2.6rem, 12vw, 5.2rem); font-weight: 900; font-variation-settings: "wdth" 62; line-height: .92; }
 .lp-xm-text p { max-width: 58ch; }
 .lp-xm-figs { margin-top: 24px; }
 @media (min-width: 900px) { .lp-xm-figs { grid-template-columns: 1fr 1fr; } }
@@ -688,7 +688,29 @@ figure.print figcaption { color: var(--gray); font-size: .9rem; margin: 10px var
 .lp-xm figcaption { margin-top: 10px; color: var(--gray); font-size: .85rem; }
 @media (min-width: 900px) {
   .lp-xm .wrap { grid-template-columns: 1.1fr .9fr; column-gap: 56px; }
-  .lp-xm-engine { grid-column: 2; grid-row: 1 / span 2; width: 100%; max-width: 440px; }
   .lp-xm-text { grid-column: 1; grid-row: 1; }
-  .lp-xm-cluster { grid-column: 1; grid-row: 2; justify-self: start; width: 100%; max-width: 520px; }
+  .lp-xm-cluster { grid-column: 2; grid-row: 1; align-self: center; justify-self: end; width: 100%; max-width: 520px; }
 }
+
+/* Xuemai V2 as the opening screen: the engine stands behind the headline on phones, beside it on wide screens */
+.lp-xm-hero { overflow: hidden; }
+.lp-xm-hero .lp-hero-in { grid-template-columns: minmax(0, 1fr); position: relative; z-index: 2; }
+.lp-xm-hero-art { position: absolute; z-index: 1; margin: 0; left: 50%; top: calc(var(--nav-h) + 8px); height: 58svh; transform: translateX(-50%); pointer-events: none; }
+.lp-xm-hero-art img { height: 100%; width: auto; max-width: none; mix-blend-mode: screen; opacity: .9; }
+.lp-xm-hero::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, transparent 0%, transparent 42%, rgba(0,0,0,.82) 62%, #000 78%); }
+.lp-xm-hero .lp-hero-text { align-self: end; }
+@media (prefers-reduced-motion: no-preference) {
+  .lp-xm-hero-art img { animation: lp-rise 2.4s cubic-bezier(.65, 0, .2, 1) .2s both; }
+}
+@media (min-width: 1000px) {
+  .lp-xm-hero::before { background: linear-gradient(90deg, #000 0%, rgba(0,0,0,.7) 38%, transparent 60%); }
+  .lp-xm-hero-art { left: auto; right: max(4vw, calc((100vw - 1240px) / 2)); transform: none; top: calc(var(--nav-h) + 24px); height: calc(100svh - var(--nav-h) - 48px); }
+  .lp-xm-hero .lp-hero-in { grid-template-columns: minmax(0, 58%) 1fr; }
+}
+/* The former opening screen, now second */
+.lp-first { min-height: auto; border-top: 1px solid var(--line); }
+.lp-first .lp-hero-in { min-height: 92svh; padding-top: 48px; }
+.lp-first-title { font-variation-settings: "wdth" 62; font-weight: 900; font-size: clamp(4.4rem, 24vw, 14rem); line-height: .86; letter-spacing: -.01em; margin: 0 0 22px; }
+.lp-first-title span { display: block; }
+.lp-first .lp-stack { height: calc(92svh - 84px); }
