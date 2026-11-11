@@ -714,3 +714,18 @@ figure.print figcaption { color: var(--gray); font-size: .9rem; margin: 10px var
 .lp-first-title { font-variation-settings: "wdth" 62; font-weight: 900; font-size: clamp(4.4rem, 24vw, 14rem); line-height: .86; letter-spacing: -.01em; margin: 0 0 22px; }
 .lp-first-title span { display: block; }
 .lp-first .lp-stack { height: calc(92svh - 84px); }
+
+/* Phones: the engine and the headline sit one above the other instead of overlapping, and the screen is only as tall as its content */
+@media (max-width: 999px) {
+  .lp-xm-hero, .lp-xm-hero .lp-hero-in { min-height: 0; }
+  .lp-xm-hero::before { display: none; }
+  .lp-xm-hero-art { position: relative; left: auto; top: auto; transform: none; display: flex; justify-content: center;
+    height: clamp(220px, 36svh, 420px); margin: calc(var(--nav-h) + 4px) 0 0; z-index: 2; }
+  .lp-xm-hero .lp-hero-in { padding-block: 14px 32px; }
+  .lp-xm-hero h1 { font-size: clamp(2.8rem, 15vw, 6.4rem); margin-bottom: 14px; white-space: nowrap; }
+  .lp-xm-hero h1 span { display: inline; }
+  .lp-xm-hero .status { margin-bottom: 12px; }
+  .lp-xm-hero .lede { margin-bottom: 20px; }
+  .lp-xm-hero .actions { display: flex; flex-direction: row; flex-wrap: wrap; gap: 10px; }
+  .lp-xm-hero .actions .btn { flex: 1 1 140px; width: auto; }
+}
