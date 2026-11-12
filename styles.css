@@ -545,6 +545,8 @@ figure.print figcaption { color: var(--gray); font-size: .9rem; margin: 10px var
 .lp-tag.live { border-color: #e8b04a; color: #1a1205; background: #e8b04a; }
 .lp-tag.live::before { content: ""; display: inline-block; width: 6px; height: 6px; margin: 0 6px 1px 0; border-radius: 50%; background: #1a1205; animation: lp-blink 1.6s ease-in-out infinite; }
 @keyframes lp-blink { 50% { opacity: .2; } }
+.lp-tag.delayed { border-color: #e8b04a; color: #e8b04a; background: rgba(232,176,74,.12); }
+.lp-log li.delayed h4 { color: var(--dim); }
 .lp-tag.dev { border-color: #e8c84a; color: #f3d968; background: rgba(232,200,74,.16); animation: lp-devfade 2.8s ease-in-out infinite; }
 @keyframes lp-devfade { 0%, 100% { background: rgba(232,200,74,.22); border-color: #e8c84a; color: #f3d968; } 50% { background: rgba(232,200,74,0); border-color: rgba(232,200,74,.25); color: rgba(243,217,104,.45); } }
 @media (prefers-reduced-motion: reduce) { .lp-tag.live::before, .lp-tag.dev { animation: none; } }
