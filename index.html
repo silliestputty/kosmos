@@ -42,30 +42,34 @@
 
 <main id="main">
 
-<section class="hero lp-hero lp-xm-hero" aria-labelledby="hero-title">
-  <div class="lp-grid" aria-hidden="true"></div>
-  <figure class="lp-xm-hero-art">
-    <img src="assets/wire/xuemai.png" width="555" height="1205" alt="Line drawing of the Xuemai V2 engine, drawn from its game model: two turbopumps either side of the combustion chamber, feed lines up to the engine plate, gimbal actuators and the nozzle bell.">
-  </figure>
-  <div class="wrap lp-hero-in">
-    <div class="lp-hero-text">
-      <p class="status">Xuemai V2 · 血脉 · static fire in progress</p>
-      <h1 id="hero-title"><span>Our</span> <span>answer.</span></h1>
-      <p class="lede">Xuemai V2, the engine under every Phoenix 10. Two turbopumps, one for each propellant, and a closed cycle that burns its turbine gas instead of dumping it.</p>
-      <div class="actions">
-        <a class="btn primary" href="#xuemai">See the engine</a>
-        <a class="btn" href="#vesta">Flight record</a>
-      </div>
+<section class="hero lp-pf" aria-labelledby="hero-title">
+  <video class="lp-pf-bg" autoplay muted loop playsinline preload="auto" poster="assets/video/pf7-poster.jpg" aria-hidden="true">
+    <source src="assets/video/pf7-loop.mp4" type="video/mp4">
+  </video>
+  <div class="wrap lp-pf-in">
+    <p class="status">Pathfinder 7 · launched · booster landed</p>
+    <h1 id="hero-title">Up and back.</h1>
+    <p class="lede">Phoenix 10 carried the Pathfinder 7 satellite toward orbit tonight on nine Xuemai engines. Then the booster turned around and landed 12 m from its target.</p>
+    <div class="actions">
+      <button class="btn primary" type="button" data-film-open>Watch the launch</button>
+      <a class="btn" href="#xuemai">See the engine</a>
     </div>
   </div>
 </section>
+
+<dialog class="lp-film" aria-label="Pathfinder 7 launch film">
+  <video controls playsinline preload="none" poster="assets/video/pf7-poster.jpg">
+    <source src="assets/video/pathfinder-7-launch.mp4" type="video/mp4">
+  </video>
+  <button class="lp-film-close" type="button" data-film-close aria-label="Close the film">Close</button>
+</dialog>
 
 <section id="xuemai" class="lp-xm" aria-labelledby="xuemai-title">
   <div class="wrap">
     <div class="lp-xm-text">
       <p class="lp-xm-kicker">Xuemai V2</p>
       <h2 id="xuemai-title">Two pumps. Closed cycle.</h2>
-      <p>Xuemai means lifeblood. It is the engine under every Phoenix 10, nine to a booster, and it is now in its second form.</p>
+      <p>Xuemai means lifeblood. It is the engine under every Phoenix 10, nine to a booster, and it is now in its second form. Testing is complete and Xuemai V2 is in full production.</p>
       <p>V2 splits the work between two turbopumps, one for each propellant, placed where the airframe is clear. It runs a closed cycle: the gas that spins the turbines is burned in the engine instead of being dumped overboard. Nine still sit on the plate with room between them.</p>
       <dl class="lp-figs lp-xm-figs">
         <div><dt>85 kN</dt><dd>thrust each, in vacuum</dd></div>
@@ -212,9 +216,9 @@
     <h2 id="next-title">What we fly next</h2>
     <h3 class="lp-log-title">Test log: next up</h3>
     <ol class="lp-log">
-      <li class="live"><span class="lp-tag live">Tonight</span><h4>Pathfinder 7 on Phoenix 10</h4><p>A commercial launch. Phoenix 10 carries the Pathfinder 7 satellite to a stable orbit of Gael for our client, and the booster tries to fly home under Niepan.</p></li>
+      <li><span class="lp-tag done">Launched</span><h4>Pathfinder 7 on Phoenix 10</h4><p>A commercial launch on nine Xuemai engines. The second stage carried Pathfinder 7 on toward orbit and the booster landed 12 m from its target. <a href="#top" data-film-open>Watch the launch</a>.</p></li>
       <li class="delayed" role="alert"><span class="lp-tag delayed">Delayed</span><h4>Peng P-2 hover and landing</h4><p>This test is delayed.</p></li>
-      <li class="live"><span class="lp-tag live">In progress</span><h4>XM-1P Xuemai static fire and fit check</h4><p>Phoenix 10 held down on the pad with its nine new Xuemai engines. We check that all nine sit flush on the plate and clear each other, then light them together at full thrust before the first flight.</p></li>
+      <li><span class="lp-tag done">Complete</span><h4>XM-1P Xuemai testing</h4><p>Static fire and fit check done: all nine sit flush on the plate and clear each other. Xuemai V2 is now in full production.</p></li>
       <li><span class="lp-tag sim">Simulation</span><h4>Peng P-1 ascent</h4><p>First liftoff of the methalox heavy booster with its dummy payload, to check thrust, control and stability before a real flight.</p></li>
       <li><span class="lp-tag test">Test flight</span><h4>Peng P-1 flight 1</h4><p>Dummy 10 t payload into the sea while the booster turns back and tries to land itself.</p></li>
       <li><span class="lp-tag test">Test flight</span><h4>Phoenix 10 on Xuemai</h4><p>The first flight on the new engines, with the booster coming home under Niepan.</p></li>
@@ -263,5 +267,20 @@
 </footer>
 
 <script src="site.js" defer></script>
+<script>
+(function () {
+  var d = document.querySelector(".lp-film"); if (!d) return;
+  var v = d.querySelector("video");
+  document.querySelectorAll("[data-film-open]").forEach(function (b) {
+    b.addEventListener("click", function (e) { e.preventDefault(); if (d.showModal) d.showModal(); else d.setAttribute("open", ""); try { v.play(); } catch (_) {} });
+  });
+  function close() { v.pause(); if (d.close) d.close(); else d.removeAttribute("open"); }
+  d.querySelector("[data-film-close]").addEventListener("click", close);
+  d.addEventListener("click", function (e) { if (e.target === d) close(); });
+  d.addEventListener("close", function () { v.pause(); });
+  var bg = document.querySelector(".lp-pf-bg");
+  if (bg && window.matchMedia("(prefers-reduced-motion: reduce)").matches) { bg.removeAttribute("autoplay"); bg.pause(); }
+})();
+</script>
 </body>
 </html>
