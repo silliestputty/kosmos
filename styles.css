@@ -451,7 +451,7 @@ figure.print figcaption { color: var(--gray); font-size: .9rem; margin: 10px var
 .bp-credit { color: #6b7178; font-size: .85rem; max-width: 80ch; margin-top: 16px; }
 
 /* ---------- Landing page ---------- */
-/* Blueprint hero: the real Phoenix 10 drawn as lines, rising beside a condensed headline. */
+/* Blueprint hero: the real Phoenix 1 drawn as lines, rising beside a condensed headline. */
 .lp-hero { display: block; min-height: 100svh; padding: 0; }
 .lp-grid { position: absolute; inset: 0; pointer-events: none;
   background-image: linear-gradient(rgba(242,242,239,.045) 1px, transparent 1px), linear-gradient(90deg, rgba(242,242,239,.045) 1px, transparent 1px);
